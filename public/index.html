@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
     <script defer data-domain="llm-pricing.com" src="https://plausible.io/js/script.js"></script>
     <meta name="google-site-verification" content="W-STJqhdhQzjM1uN49WboXeyEZpz7S4CWsqcaU6f5F8" />
-    <meta name="description" content="This page displays different LLM hosting options with pricing per 1M tokens and the provider. You can filter the data by provider and sort each column.">
+    <meta name="description"
+        content="This page displays different Large Language Model (LLM) hosting options with pricing per 1M tokens and the provider. You can filter the data by provider and sort each column.">
     <meta name="keywords" content="llm, hosting, options, pricing, tokens, provider, filter, sort">
-    <meta name="title" content="LLM Hosting Options">
+    <meta name="title" content="Large Language Model (LLM) Hosting Options">
     <meta name="robots" content="index, follow">
     <meta name="revisit-after" content="7 days">
     <meta name="language" content="English">
@@ -38,7 +40,8 @@
             border-collapse: collapse;
         }
 
-        th, td {
+        th,
+        td {
             padding: 10px;
             border: 1px solid #ddd;
             text-align: left;
@@ -60,7 +63,10 @@
 
     <div id="pricing-container">
         <h1>LLM Hosting Options</h1>
-        <p>This page displays different LLM hosting options with pricing per 1M tokens and the provider. You can filter the data by provider and sort each column.</p>
+        <p>This page displays different Large Language Model (LLM) hosting options with pricing per 1M tokens and the
+            provider. You can filter the data by provider and sort each column.</p>
+
+        <p>Tip: 1,000 tokens are about 750 words.</p>
 
         <table id="pricing-table">
             <thead>
@@ -68,11 +74,11 @@
                     <th>ID</th>
                     <th data-sortable="true">Provider</th>
                     <th data-sortable="true">Model Name</th>
-                    <th data-sortable="true">Input Tokens Price</th>
-                    <th data-sortable="true">Output Tokens Price</th>
-                    <th data-sortable="true">10,000 sessions (USD) / month</th>
-                    <th data-sortable="true">100,000 sessions / month</th>
-                    <th data-sortable="true">1,000,000 sessions / month</th>
+                    <th data-sortable="true">Context size (tokens)</th>
+                    <th data-sortable="true">Usecase</th>
+                    <th data-sortable="true">Input Tokens Price ($ per 1M)</th>
+                    <th data-sortable="true">Output Tokens Price ($ per 1M)</th>
+                    <th data-sortable="true">Training Tokens Price ($ per 1M)</th>
                 </tr>
             </thead>
             <tbody>
@@ -84,38 +90,41 @@
     <script>
         // Pricing data directly in the JavaScript code
         const pricingData = [
-            { "index": 0, "provider": "OpenAI", "model_name": "gpt-4-0613", "price_input_tokens": 0.0300, "price_output_tokens": 0.0600, "sessions_10000": 65.63, "sessions_100000": 656.25, "sessions_1000000": 6562.50 },
-            { "index": 1, "provider": "OpenAI", "model_name": "gpt-4-32k", "price_input_tokens": 0.0600, "price_output_tokens": 0.1200, "sessions_10000": 131.25, "sessions_100000": 1312.50, "sessions_1000000": 13125.00 },
-            { "index": 2, "provider": "OpenAI", "model_name": "gpt-4-32k-0613", "price_input_tokens": 0.0600, "price_output_tokens": 0.1200, "sessions_10000": 75.00, "sessions_100000": 750.00, "sessions_1000000": 7500.00 },
-            { "index": 3, "provider": "OpenAI", "model_name": "gpt-4-1106-preview", "price_input_tokens": 0.0100, "price_output_tokens": 0.0300, "sessions_10000": 12.50, "sessions_100000": 125.00, "sessions_1000000": 1250.00 },
-            { "index": 4, "provider": "OpenAI", "model_name": "gpt-3.5-turbo-1106", "price_input_tokens": 0.0010, "price_output_tokens": 0.0020, "sessions_10000": 1.25, "sessions_100000": 12.50, "sessions_1000000": 125.00 },
-            { "index": 5, "provider": "OpenAI", "model_name": "gpt-3.5-turbo", "price_input_tokens": 0.0010, "price_output_tokens": 0.0020, "sessions_10000": 1.25, "sessions_100000": 12.50, "sessions_1000000": 125.00 },
-            { "index": 6, "provider": "OpenAI", "model_name": "gpt-3.5-turbo-16k", "price_input_tokens": 0.0010, "price_output_tokens": 0.0020, "sessions_10000": 1.25, "sessions_100000": 12.50, "sessions_1000000": 125.00 },
-            { "index": 7, "provider": "OpenAI", "model_name": "gpt-3.5-turbo-instruct", "price_input_tokens": 0.0015, "price_output_tokens": 0.0020, "sessions_10000": 2.34, "sessions_100000": 23.44, "sessions_1000000": 234.38 },
-            { "index": 8, "provider": "OpenAI", "model_name": "Ada", "price_input_tokens": 0.0004, "price_output_tokens": null, "sessions_10000": 0.50, "sessions_100000": 5.00, "sessions_1000000": 50.00 },
-            { "index": 9, "provider": "Google Vertex AI", "model_name": "text-bison-001", "price_input_tokens": 0.004000, "price_output_tokens": 0.0040, "sessions_10000": 5.00, "sessions_100000": 50.00, "sessions_1000000": 500.00 },
-            { "index": 10, "provider": "Google Vertex AI", "model_name": "chat-bison-001", "price_input_tokens": 0.002000, "price_output_tokens": 0.0020, "sessions_10000": 2.50, "sessions_100000": 25.00, "sessions_1000000": 250.00 },
-            { "index": 11, "provider": "Anthropic", "model_name": "Claude Instant", "price_input_tokens": 0.00163, "price_output_tokens": 0.00551, "sessions_10000": 2.04, "sessions_100000": 20.38, "sessions_1000000": 203.75 },
-            { "index": 12, "provider": "Anthropic", "model_name": "Claude-v1", "price_input_tokens": 0.011020, "price_output_tokens": 0.03268, "sessions_10000": 13.78, "sessions_100000": 137.75, "sessions_1000000": 1377.50 },
-            { "index": 13, "provider": "Cohere", "model_name": "Generation (Default)", "price_input_tokens": 0.010000, "price_output_tokens": null, "sessions_10000": 12.50, "sessions_100000": 125.00, "sessions_1000000": 1250.00 },
-            { "index": 14, "provider": "Cohere", "model_name": "Generation (Custom)", "price_input_tokens": 0.020000, "price_output_tokens": null, "sessions_10000": 25.00, "sessions_100000": 250.00, "sessions_1000000": 2500.00 },
-            { "index": 15, "provider": "Cohere", "model_name": "Summarization (Default)", "price_input_tokens": 0.010000, "price_output_tokens": null, "sessions_10000": 12.50, "sessions_100000": 125.00, "sessions_1000000": 1250.00 },
-            { "index": 16, "provider": "Cohere", "model_name": "Summarization (Custom)", "price_input_tokens": 0.020000, "price_output_tokens": null, "sessions_10000": 25.00, "sessions_100000": 250.00, "sessions_1000000": 2500.00 },
-            { "index": 17, "provider": "Azure OpenAI", "model_name": "ChatGPT (gpt-3.5-turbo)", "price_input_tokens": 0.002000, "price_output_tokens": null, "sessions_10000": 0.63, "sessions_100000": 25.00, "sessions_1000000": 250.00 },
-            { "index": 18, "provider": "Azure OpenAI", "model_name": "GPT-4 (8K context)", "price_input_tokens": 0.030000, "price_output_tokens": 0.0600, "sessions_10000": 65.63, "sessions_100000": 375.00, "sessions_1000000": 3750.00 },
-            { "index": 19, "provider": "Azure OpenAI", "model_name": "GPT-4 (32K context)", "price_input_tokens": 0.060000, "price_output_tokens": 0.1200, "sessions_10000": 131.25, "sessions_100000": 750.00, "sessions_1000000": 7500.00 },
-            { "index": 20, "provider": "AWS Bedrock", "model_name": "Jurassic-2 Mid", "price_input_tokens": 0.01250, "price_output_tokens": 0.01250, "sessions_10000": 15.63, "sessions_100000": 156.25, "sessions_1000000": 1562.50 },
-            { "index": 21, "provider": "AWS Bedrock", "model_name": "Jurassic-2 Ultra", "price_input_tokens": 0.01880, "price_output_tokens": 0.01880, "sessions_10000": 23.50, "sessions_100000": 235.00, "sessions_1000000": 2350.00 },
-            { "index": 22, "provider": "AWS Bedrock", "model_name": "Titan Text – Lite", "price_input_tokens": 0.00030, "price_output_tokens": 0.00040, "sessions_10000": 0.47, "sessions_100000": 3.75, "sessions_1000000": 37.50 },
-            { "index": 23, "provider": "AWS Bedrock", "model_name": "Titan Text – Express", "price_input_tokens": 0.00130, "price_output_tokens": 0.00140, "sessions_10000": 1.72, "sessions_100000": 16.25, "sessions_1000000": 162.50 },
-            { "index": 24, "provider": "AWS Bedrock", "model_name": "Claude Instant", "price_input_tokens": 0.00163, "price_output_tokens": 0.00551, "sessions_10000": 5.68, "sessions_100000": 20.38, "sessions_1000000": 203.75 },
-            { "index": 25, "provider": "AWS Bedrock", "model_name": "Claude", "price_input_tokens": 0.01102, "price_output_tokens": 0.03268, "sessions_10000": 34.08, "sessions_100000": 137.75, "sessions_1000000": 1377.50 },
-            { "index": 26, "provider": "AWS Bedrock", "model_name": "Command", "price_input_tokens": 0.00150, "price_output_tokens": 0.00200, "sessions_10000": 2.34, "sessions_100000": 18.75, "sessions_1000000": 187.50 },
-            { "index": 27, "provider": "AWS Bedrock", "model_name": "Command Light", "price_input_tokens": 0.00030, "price_output_tokens": 0.00060, "sessions_10000": 0.66, "sessions_100000": 3.75, "sessions_1000000": 37.50 },
-            { "index": 28, "provider": "AWS Bedrock", "model_name": "Embed – English", "price_input_tokens": 0.00010, "price_output_tokens": 0.00010, "sessions_10000": 0.13, "sessions_100000": 1.25, "sessions_1000000": 12.50 },
-            { "index": 29, "provider": "AWS Bedrock", "model_name": "llama 2 Chat (13B)", "price_input_tokens": 0.00075, "price_output_tokens": 0.00100, "sessions_10000": 1.17, "sessions_100000": 9.38, "sessions_1000000": 93.75 },
-            { "index": 30, "provider": "AWS Bedrock", "model_name": "Llama 2 Chat (70B)", "price_input_tokens": 0.00195, "price_output_tokens": 0.00256, "sessions_10000": 3.01, "sessions_100000": 24.38, "sessions_1000000": 243.75 },
+            { "index": 0, "provider": "OpenAI", "model_name": "gpt-4-0125-preview", "context_size": "128k", "usecase": "chat", "price_input_tokens": 10, "price_output_tokens": 30, "price_training_tokens": null },
+            { "index": 1, "provider": "OpenAI", "model_name": "gpt-4-1106-preview", "context_size": "128k", "usecase": "chat", "price_input_tokens": 10, "price_output_tokens": 30, "price_training_tokens": null },
+            { "index": 2, "provider": "OpenAI", "model_name": "gpt-4-1106-vision-preview", "context_size": "128k", "usecase": "vision-chat", "price_input_tokens": 10, "price_output_tokens": 30, "price_training_tokens": null },
+            { "index": 3, "provider": "OpenAI", "model_name": "gpt-4-32k", "context_size": "32k", "usecase": "chat", "price_input_tokens": 60, "price_output_tokens": 120, "price_training_tokens": null },
+            { "index": 4, "provider": "OpenAI", "model_name": "gpt-4", "context_size": "8k", "usecase": "chat", "price_input_tokens": 30, "price_output_tokens": 60, "price_training_tokens": null },
+            { "index": 5, "provider": "OpenAI", "model_name": "gpt-3.5-turbo-0125", "context_size": "16k", "usecase": "chat", "price_input_tokens": 0.5, "price_output_tokens": 1.5, "price_training_tokens": null },
+            { "index": 6, "provider": "OpenAI", "model_name": "gpt-3.5-turbo", "context_size": "4k", "usecase": "chat", "price_input_tokens": 0.0010, "price_output_tokens": 0.0020, "price_training_tokens": null },
+
+            { "index": 6, "provider": "OpenAI", "model_name": "gpt-3.5-turbo-16k", "context_size": null, "usecase": null, "price_input_tokens": 0.0010, "price_output_tokens": 0.0020, "price_training_tokens": null },
+            { "index": 7, "provider": "OpenAI", "model_name": "gpt-3.5-turbo-instruct", "context_size": null, "usecase": null, "price_input_tokens": 0.0015, "price_output_tokens": 0.0020, "price_training_tokens": null },
+            { "index": 8, "provider": "OpenAI", "model_name": "Ada", "context_size": null, "usecase": null, "price_input_tokens": 0.0004, "price_output_tokens": null, "price_training_tokens": null },
+            { "index": 9, "provider": "Google Vertex AI", "model_name": "text-bison-001", "context_size": null, "usecase": null, "price_input_tokens": 0.004000, "price_output_tokens": 0.0040, "price_training_tokens": null },
+            { "index": 10, "provider": "Google Vertex AI", "model_name": "chat-bison-001", "context_size": null, "usecase": null, "price_input_tokens": 0.002000, "price_output_tokens": 0.0020, "price_training_tokens": null },
+            { "index": 11, "provider": "Anthropic", "model_name": "Claude Instant", "context_size": null, "usecase": null, "price_input_tokens": 0.00163, "price_output_tokens": 0.00551, "price_training_tokens": null },
+            { "index": 12, "provider": "Anthropic", "model_name": "Claude-v1", "context_size": null, "usecase": null, "price_input_tokens": 0.011020, "price_output_tokens": 0.03268, "price_training_tokens": null },
+            { "index": 13, "provider": "Cohere", "model_name": "Generation (Default)", "context_size": null, "usecase": null, "price_input_tokens": 0.010000, "price_output_tokens": null, "price_training_tokens": null },
+            { "index": 14, "provider": "Cohere", "model_name": "Generation (Custom)", "context_size": null, "usecase": null, "price_input_tokens": 0.020000, "price_output_tokens": null, "price_training_tokens": null },
+            { "index": 15, "provider": "Cohere", "model_name": "Summarization (Default)", "context_size": null, "usecase": null, "price_input_tokens": 0.010000, "price_output_tokens": null, "price_training_tokens": null },
+            { "index": 16, "provider": "Cohere", "model_name": "Summarization (Custom)", "context_size": null, "usecase": null, "price_input_tokens": 0.020000, "price_output_tokens": null, "price_training_tokens": null },
+            { "index": 17, "provider": "Azure OpenAI", "model_name": "ChatGPT (gpt-3.5-turbo)", "context_size": null, "usecase": null, "price_input_tokens": 0.002000, "price_output_tokens": null, "price_training_tokens": null },
+            { "index": 18, "provider": "Azure OpenAI", "model_name": "GPT-4 (8K context)", "context_size": null, "usecase": null, "price_input_tokens": 0.030000, "price_output_tokens": 0.0600, "price_training_tokens": null },
+            { "index": 19, "provider": "Azure OpenAI", "model_name": "GPT-4 (32K context)", "context_size": null, "usecase": null, "price_input_tokens": 0.060000, "price_output_tokens": 0.1200, "price_training_tokens": null },
+            { "index": 20, "provider": "AWS Bedrock", "model_name": "Jurassic-2 Mid", "context_size": null, "usecase": null, "price_input_tokens": 0.01250, "price_output_tokens": 0.01250, "price_training_tokens": null },
+            { "index": 21, "provider": "AWS Bedrock", "model_name": "Jurassic-2 Ultra", "context_size": null, "usecase": null, "price_input_tokens": 0.01880, "price_output_tokens": 0.01880, "price_training_tokens": null },
+            { "index": 22, "provider": "AWS Bedrock", "model_name": "Titan Text – Lite", "context_size": null, "usecase": null, "price_input_tokens": 0.00030, "price_output_tokens": 0.00040, "price_training_tokens": null },
+            { "index": 23, "provider": "AWS Bedrock", "model_name": "Titan Text – Express", "context_size": null, "usecase": null, "price_input_tokens": 0.00130, "price_output_tokens": 0.00140, "price_training_tokens": null },
+            { "index": 24, "provider": "AWS Bedrock", "model_name": "Claude Instant", "context_size": null, "usecase": null, "price_input_tokens": 0.00163, "price_output_tokens": 0.00551, "price_training_tokens": null },
+            { "index": 25, "provider": "AWS Bedrock", "model_name": "Claude", "context_size": null, "usecase": null, "price_input_tokens": 0.01102, "price_output_tokens": 0.03268, "price_training_tokens": null },
+            { "index": 26, "provider": "AWS Bedrock", "model_name": "Command", "context_size": null, "usecase": null, "price_input_tokens": 0.00150, "price_output_tokens": 0.00200, "price_training_tokens": null },
+            { "index": 27, "provider": "AWS Bedrock", "model_name": "Command Light", "context_size": null, "usecase": null, "price_input_tokens": 0.00030, "price_output_tokens": 0.00060, "price_training_tokens": null },
+            { "index": 28, "provider": "AWS Bedrock", "model_name": "Embed – English", "context_size": null, "usecase": null, "price_input_tokens": 0.00010, "price_output_tokens": 0.00010, "price_training_tokens": null },
+            { "index": 29, "provider": "AWS Bedrock", "model_name": "llama 2 Chat (13B)", "context_size": null, "usecase": null, "price_input_tokens": 0.00075, "price_output_tokens": 0.00100, "price_training_tokens": null },
+            { "index": 30, "provider": "AWS Bedrock", "model_name": "Llama 2 Chat (70B)", "context_size": null, "usecase": null, "price_input_tokens": 0.00195, "price_output_tokens": 0.00256, "price_training_tokens": null }
         ];
+
 
         document.addEventListener('DOMContentLoaded', function () {
             renderPricingTable(pricingData);
@@ -125,14 +134,14 @@
             const pricingTable = $('#pricing-table').DataTable({
                 data: pricingData,
                 columns: [
-                	{ data: 'index' },
+                    { data: 'index' },
                     { data: 'provider', render: $.fn.dataTable.render.text() },
                     { data: 'model_name' },
+                    { data: 'context_size' },
+                    { data: 'usecase' },
                     { data: 'price_input_tokens' },
                     { data: 'price_output_tokens' },
-                    { data: 'sessions_10000' },
-                    { data: 'sessions_100000' },
-                    { data: 'sessions_1000000' },
+                    { data: 'price_training_tokens' },
                 ],
             });
 
